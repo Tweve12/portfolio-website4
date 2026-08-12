@@ -1,0 +1,817 @@
+@import url(./base.css);
+
+
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+        -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+.bg-image--gear, .about__text--decoration {
+    pointer-events: none;
+}
+
+/* Весь контент автоматически выше фона */
+.background-container > *:not(.bg-image):not(.bg-image--gear) {
+    position: relative;
+}
+
+.arrow{
+    opacity: 0.5;
+}
+
+.bg-image--gear{
+    position: absolute;
+    top: 35vh;
+    left: 0;
+    opacity: 0.1;
+}
+
+.header__block{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 78px;
+    margin-top: 10px;
+    margin-bottom: 144px;
+    z-index: 2;
+}
+
+.header__navigation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 55px;
+}
+
+.header__nav{
+    display: flex;
+    gap: 42px;
+}
+
+.hero__text--additional, .about__text--additional, .gamepad__text--additional{
+    display: flex;
+    align-items: center;
+    gap: 31px;
+    margin-bottom: 26px;
+}
+
+.text--span{
+    color: var(--color-additional);
+}
+
+.hero{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.hero__title, .about__title{
+    font-family: var(--font-family);
+    font-size: 68px;
+}
+
+.hero__info, .about__info, .gamepad__info{
+    max-width: 518px;
+}
+
+.hero__info--text, .about__info--text, .gamepad__info--text{
+    margin-block: 31px 36px;
+    line-height: 29px;
+}
+
+.hero__img{
+    width: 100%;
+    height: 100%;
+    transform: translateY(80px) scale(1.2);
+}
+
+/* Все картинки находятся в одном месте */
+.hero__img > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 1. Фон */
+.hero__img-bg {
+    z-index: 1;
+}
+
+/* 2. Group — изначально скрыт и уменьшен */
+.hero__img-group {
+    z-index: 2;
+    opacity: 0;
+    transform-origin: center;
+    animation: heroGroup 0.8s ease-out 1s forwards;
+}
+
+/* 3. Person — выше Group */
+.hero__img-person {
+    z-index: 3;
+    opacity: 0;
+    animation: heroPerson 0.8s ease-out 0.2s forwards;
+}
+
+
+/* Person появляется снизу */
+@keyframes heroPerson {
+    from {
+        opacity: 0;
+        transform: translateY(100px) scale(1.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50px) scale(1.3);
+    }
+}
+
+
+/* Group появляется увеличением */
+@keyframes heroGroup {
+    from {
+        opacity: 0;
+        transform: translate(55px, -170px) scale(0.55);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(55px, -170px) scale(0.7);
+    }
+}
+
+.hero__dots{
+    transform: translate(300px, -50px) scale(0.2);
+}
+
+.hero__img--gear{
+    position: relative;
+    transform: translate(220px, 30px);
+}
+
+.hero__img--gear svg{
+    position: absolute;
+    animation: rotateGroup 5s linear infinite;
+}
+
+@keyframes rotateGroup {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.card__block{
+    display: flex;
+    align-items: center;
+}
+
+.card__text, .card__title{
+    font-size: 10px;
+    margin-block: 5.2px 4.2px;
+}
+
+.card__block--span{
+    margin-left: 6px;
+}
+
+.card__block--span{
+    font-size: 8px;
+}
+
+.hero__card--first, .hero__card--second{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero__card--first{
+    z-index: 1;
+    position: absolute;
+    top: -6vh;
+    left: 1vw;
+}
+
+.hero__card--second{
+    flex-direction: row-reverse;
+    z-index: 3;
+    position: absolute;
+    bottom: 1vh ;
+    right: 2vw;
+}
+
+.hero__card--block{
+    width: 101px;
+}
+
+.about__picture {
+    position: relative;
+}
+
+.about__img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.about__screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+
+    width: 45%;
+    height: auto;
+
+    transform: translate(20%, -10%);
+    animation: screenFloat 3s ease-in-out infinite;
+}
+
+
+@keyframes screenFloat {
+    0%,
+    100% {
+        transform: translate(-20%, 10%);
+    }
+
+    50% {
+        transform: translate(-20%, calc(10% - 10px));
+    }
+}
+
+.about__content, .gamepad__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about__info--text{
+    position: relative;
+    display: flex;
+}
+
+.about__arrow{
+    position: absolute;
+    right: 0;
+    top: 110%;
+    transform: translateX(-220px) scaleX(-1);
+}
+
+.about__text--decoration{
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
+
+.about{
+    position: relative;
+}
+
+.about__img-bg{
+    position: absolute;
+    right: 0;
+    top: -20%;
+}
+
+.gamepad__content{
+    margin: 70px;
+}
+
+.gamepad__picture {
+    position: relative;
+    width: 100%;
+}
+
+/* Облако */
+.gamepad__img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Gamepad */
+.gamepad__screen {
+    position: absolute;
+    z-index: 3;
+
+    width: 70%;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+    animation: gamepadFloat 3s ease-in-out infinite;
+}
+
+/* Обе шестерёнки */
+.gamepad__gear {
+    position: absolute;
+    z-index: 4;
+    height: auto;
+
+    animation: gearRotate 4.6s linear infinite;
+}
+
+/* Gear 1 — чуть ниже и левее */
+.gamepad__gear--first {
+    width: 13%;
+    top: 15%;
+    right: 38%;
+}
+
+/* Gear 2 — выше и правее */
+.gamepad__gear--second {
+    width: 18%;
+    top: 5%;
+    right: 20%;
+}
+
+
+/* Gamepad слегка поднимается и опускается */
+@keyframes gamepadFloat {
+    0%,
+    100% {
+        transform: translate(-50%, -50%);
+    }
+
+    50% {
+        transform: translate(-50%, calc(-50% - 10px));
+    }
+}
+
+
+/* Шестерёнки вращаются на месте */
+@keyframes gearRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.plan__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plan__card{
+    background-color: #FBDACF;
+    border-radius: 20px;
+    padding: 36px 46px;
+}
+
+.plan__text{
+    font-size: 32px;
+}
+
+.plan__price{
+    font-size: 27px;
+    margin-block: 32px 26px;
+}
+
+.plan__price--bold{
+    font-size: 50px;
+}
+
+.plan__list{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 46px;
+}
+
+.plan__btn{
+    width: 100%;
+}
+
+.plan__cards{
+    display: flex;
+    gap: 41px;
+}
+
+.plan__title{
+    height: 144px;
+    margin-top: 23px;
+}
+
+.plan__card.active-card {
+    background-image: -webkit-image-set(
+        url(./../images/bgcard.webp) 1x,
+        url(./../images/bgcard2x.webp) 2x
+    );
+    background-image: image-set(
+        url(./../images/bgcard.webp) 1x,
+        url(./../images/bgcard2x.webp) 2x
+    );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.plan__card.active-card p, .plan__card.active-card li{
+    color: var(--color-white);
+}
+
+.plan__card.active-card .plan__sign path{
+    fill: var(--color-white);
+}
+
+.plan__card.active-card::after {
+    content: "";
+    position: absolute;
+    top: 3vh;
+    right: 2vw;
+    width: 45px;
+    height: 45px;
+    background-image: url(./../images/badge.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.footer{
+    margin-top: 72px;
+    border-top: var(--color-accent) 1px solid;
+    padding-block: 25px 20px;
+}
+
+.footer__social-media{
+    display: flex;
+    gap: 19px;
+}
+
+.social-link{
+    background-color: #FCD8CB;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition:  background-color 0.2s;
+}
+
+.social-link svg path {
+    transition: fill 0.2s;
+}
+
+.footer__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Базовые стили */
+header a {
+    position: relative;
+    text-decoration: none;
+    color: #2c4a62;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+header a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #7367BE, #4499D9);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+@media (hover: hover) {
+    a::after {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    a:hover::after {
+        transform: scaleX(1);
+    }
+
+    .btn:hover{
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover::before {
+        opacity: 1;
+    }
+
+    .social-link:hover{
+        background-color: #826F8C;
+    }
+
+    .social-link:hover svg path{
+        fill: var(--color-white);
+    }
+}
+
+.social-link:active,
+.social-link:active svg path,
+.btn:active,
+.btn:active::before {
+    transition: none;
+}
+
+a:active::after {
+    transform: scaleX(1);
+    transition: none;
+}
+
+
+ .social-link:active{
+        background-color: #826F8C;
+    }
+
+.social-link:active svg path{
+    fill: var(--color-white);
+}
+
+.btn:active::before {
+    opacity: 1;
+}
+
+.btn:active{
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+button, a {
+  -webkit-tap-highlight-color: transparent; 
+}
+
+button:focus, a:focus {
+  outline: none;
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 2px solid #007acc;
+}
+
+section{
+    margin-block: 100px;
+}
+
+@media (max-width:1290px) {
+
+    .hero__img{
+            transform: translateY(0px) scale(1);
+    }
+}
+
+.hero__info{
+    position: relative;
+}
+
+@media (max-width:1000px) {
+    .hero__img--gear{
+        display: none;
+    }
+
+    .gamepad__info{
+        margin-bottom: 20vh;
+    }
+
+    .gamepad__content{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gamepad__img{
+        display: none;
+    }
+
+    .plan__cards, .footer__content{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero, .about__content{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+   .hero__img{
+        height: 30vh;
+        width: auto;
+        margin-top: 10%;
+    }
+
+    .hero__img-group{
+        transform: scale(0.5);
+    }
+
+    .hero__info{
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .hero__info--text{
+        margin-block: 10px;
+    }
+
+    .header__nav{
+        gap: 15px;
+    }
+
+    .header__navigation{
+        gap: 20px;
+    }
+
+    .gamepad__info{
+        width: 100%;
+    }
+
+    .about__picture{
+        height: 30%;
+    }
+    
+    .header__block{
+        margin-bottom: 40px;
+    }
+
+
+    .about__content, .gamepad__content{
+        height: 100%;
+        margin: 0px;
+    }
+
+    .header__block{
+        flex-wrap: wrap;
+        height: 100%;
+    }
+
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1001;
+}
+
+.burger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--color-additional);
+    border-radius: 2px;
+    transition: all 0.25s ease-in-out;
+}
+
+.burger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.burger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;  
+    justify-content: center;
+    font-size: 16px;
+    position: absolute;
+    top: 9vh;
+    right: 2vw;
+    background-color: #FCD8CB;
+    border-radius: 12px;
+    padding: 10px;
+    z-index: 1000;
+    align-items: center;
+
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+.mobile-menu .btn{
+    width: 100%;
+}
+
+@media (max-width: 726px) {
+    .hero__img{
+        height: 30vh;
+    }
+
+    .hero__img-group{
+        display: none;
+    }
+
+
+    .about__text--additional{
+        text-align: right;
+        justify-content: flex-end;
+    }
+
+    .about__info{
+        text-align: right;
+    }
+
+    .plan__card{
+        padding: 20px 15px;
+    }
+
+    .hero__info, .about__info, .gamepad__info{
+        width: auto;
+    }
+    
+    .plan__card.active-card {
+        transform: scale(1.05);
+    }
+    
+    .hero__card--second, .hero__card--first{
+        display: none;
+    }
+
+    .gamepad__info{
+        margin-bottom: 0px;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .header__nav {
+        display: none;
+    }
+
+    .header__btn{
+        display: none;
+    }
+
+    .hero__title{
+        font-size: 48px;
+    }
+
+    .title{
+        font-size: 44px;
+    }
+
+    .text{
+        font-size: 14px;
+    }
+
+    .card__title{
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .header__block{
+        justify-content: right;
+    }
+}

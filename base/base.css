@@ -1,0 +1,191 @@
+/* Reset and base styles  */
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a, a:link, a:visited  {
+    text-decoration: none;
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+/* Common */
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+img, svg {
+	max-width: 100%;
+	height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input, textarea, button, select {
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+textarea {
+	resize: vertical;
+}
+
+button, input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+input[type='file'] {
+	max-width: 100%;
+}
+
+
+@font-face {
+  font-family: 'JosefinSans-Bold';
+  src: url('../fonts/JosefinSans-Bold.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('../fonts/JosefinSans-Medium.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root{
+    --container-max-width: 1160px;
+    --container-padding-x: 10px;
+    --color-text: #826F8C;
+    --color-title: #EB8382;
+    --color-accent: #6d597a;
+    --color-main: #eaac8b;
+    --color-additional: #446381;
+    --color-white: #ffff;
+    --font-family: "JosefinSans", sans-serif;
+    --font-family-accent: "JosefinSans-Bold", sans-serif;
+}
+
+body{
+    background-color: #FFE6D7;
+}
+
+header{
+    height: 110vh;
+}
+
+.about__content, .gamepad__content{
+    height: 100vh;
+}
+
+.container{
+    max-width: calc(var(--container-max-width) + var(--container-padding-x) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+}
+
+.title{
+    font-size: 68px;
+    color: var(--color-title);
+    font-family: var(--font-family-accent);
+}
+
+.text{
+    font-size: 18px;
+    color: var(--color-text);
+    font-family: var(--font-family);
+}
+
+.text--additional, a{
+    color: var(--color-additional);
+    font-family: var(--font-family);
+}
+
+.text--additional{
+    font-size: 23px;
+
+}
+
+.btn{
+    position: relative;
+    color: var(--color-white);
+    font-family: var(--font-family);
+    background: linear-gradient(to right, #4499D9, #7367BE);
+    padding: 14px 16px;
+    border-radius: 25px;
+    overflow: hidden;
+    transition: box-shadow 0.3s easy;
+    z-index: 2;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #4499D9;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.card{
+    background-color: color-mix(in srgb, var(--color-white) 40%, transparent);
+    padding: 10px 16.5px;
+    width: 210px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px color-mix(in srgb, var(--color-title) 40%, transparent);
+}
