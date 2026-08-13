@@ -306,7 +306,7 @@
 }
 
 .gamepad__content{
-    margin: 70px;
+    margin-block: 70px;
 }
 
 .gamepad__picture {
@@ -603,6 +603,9 @@ section{
 }
 
 @media (max-width:1000px) {
+    .gamepad__gear{
+        top: -30vh;
+    }
     .hero__img--gear{
         display: none;
     }
@@ -617,6 +620,7 @@ section{
         grid-template-rows: repeat(2, 1fr);
         align-items: center;
         justify-content: center;
+        justify-items: center;
     }
 
     .gamepad__img{
@@ -743,26 +747,19 @@ section{
 }
 
 @media (max-width: 726px) {
+    .title{
+        font-size: 44px;
+    }
+
+    .text{
+        font-size: 14px;
+    }
     .hero__img{
         height: 30vh;
     }
 
     .hero__img-group{
         display: none;
-    }
-
-
-    .about__text--additional{
-        text-align: right;
-        justify-content: flex-end;
-    }
-
-    .about__info{
-        text-align: right;
-    }
-
-    .plan__card{
-        padding: 20px 15px;
     }
 
     .hero__info, .about__info, .gamepad__info{
@@ -797,16 +794,23 @@ section{
         font-size: 48px;
     }
 
-    .title{
-        font-size: 44px;
-    }
-
-    .text{
-        font-size: 14px;
-    }
 
     .card__title{
         font-size: 10px;
+    }
+
+    .gamepad__picture{
+        width: 70%;
+    }
+
+    .plan__card{
+        width: 80%;
+    }
+}
+
+@media (max-width:390px){
+    .plan__card{
+        padding: 15px 10px;
     }
 }
 
