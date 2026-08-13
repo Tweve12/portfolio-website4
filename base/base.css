@@ -189,3 +189,5 @@ header{
     border-radius: 10px;
     box-shadow: 5px 5px 20px color-mix(in srgb, var(--color-title) 40%, transparent);
 }
+
+html { scroll-behavior: smooth; }
